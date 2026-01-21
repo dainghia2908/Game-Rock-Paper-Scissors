@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Game Oẳn Tù Tì</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Title Section -->
+        <div class="title-section">
+            <h1 class="title">🎮 Game Oẳn Tù Tì</h1>
+            <p class="subtitle">Rock • Paper • Scissors</p>
+        </div>
+
+        <!-- Name Input Section (hiện khi load page) -->
+        <div id="name-input-section" class="name-input-section">
+            <p class="name-label">Nhập tên của bạn:</p>
+            <input type="text" id="name-input" class="name-input" placeholder="Tên của bạn..." maxlength="20">
+            <button id="enter-game-btn" class="enter-game-btn">🎮 Vào Game</button>
+        </div>
+
+        <!-- Player Info Section (ẩn ban đầu) -->
+        <div id="player-info-section" class="player-info-section hidden">
+            <div class="player-card">
+                <span class="player-avatar" id="player-avatar">😀</span>
+                <span class="player-name" id="player-name">Bạn</span>
+            </div>
+            <div class="vs-divider">VS</div>
+            <div class="player-card opponent-card">
+                <span class="player-avatar" id="opponent-avatar">❓</span>
+                <span class="player-name" id="opponent-name">Đang tìm...</span>
+            </div>
+        </div>
+
+        <!-- Status Section -->
+        <div class="status-section">
+            <p class="status-label">Trạng thái:</p>
+            <p id="status" class="status-text">Nhập tên để bắt đầu</p>
+        </div>
+
+        <!-- Result Section -->
+        <div class="result-section">
+            <p id="result" class="result-text"></p>
+        </div>
+
+        <!-- Rematch Buttons (hiện sau game kết thúc) -->
+        <div id="rematch-section" class="rematch-section hidden">
+            <button id="rematch-btn" class="rematch-btn">
+                🔄 Chơi tiếp
+            </button>
+            <button id="new-match-btn" class="new-match-btn">
+                🔍 Tìm trận mới
+            </button>
+        </div>
+
+        <!-- Connection Button -->
+        <div class="button-section">
+            <button id="connect-btn" class="connect-btn hidden">
+                🔌 Tìm trận
+            </button>
+        </div>
+
+        <!-- Move Buttons -->
+        <div id="moves-section" class="moves-section hidden">
+            <p class="moves-label">Chọn nước đi của bạn:</p>
+            <div class="moves-container">
+                <button class="move-btn move-rock" data-move="ROCK">
+                    <span class="move-icon">✊</span>
+                    <span class="move-name">Búa</span>
+                </button>
+                <button class="move-btn move-paper" data-move="PAPER">
+                    <span class="move-icon">✋</span>
+                    <span class="move-name">Bao</span>
+                </button>
+                <button class="move-btn move-scissors" data-move="SCISSORS">
+                    <span class="move-icon">✌️</span>
+                    <span class="move-name">Kéo</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Multiplayer Game</p>
+        </div>
+    </div>
+
+    <!-- Socket.IO Client -->
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <!-- Game Logic -->
+    <script src="{{ url_for('static', filename='js/game.js') }}"></script>
+</body>
+</html>
